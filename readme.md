@@ -25,6 +25,6 @@ new DropConsoleWebpackPlugin({
     drop_log    : true, 
     drop_info   : true,
     drop_warn   : true,
-    drop_error  : true,
+    drop_error  : false,
 })
 ```
