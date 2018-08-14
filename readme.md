@@ -18,7 +18,7 @@ Name | type | default | Description
 drop_log | Boolean | true | remove console.log(...)
 drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | true | remove console.warn(...)
-drop_error | Boolean | true | remove console.error(...)
+drop_error | Boolean | false | remove console.error(...)
 ## Code
 ```
 new DropConsoleWebpackPlugin({
