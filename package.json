@@ -10,7 +10,10 @@
     "url": "git+https://github.com/Rise-Devin/webpack-building.git"
   },
   "keywords": [
-    "plugin;webpack;remove;log;console"
+    "webpack",
+    "plugin",
+    "remove",
+    "console"    
   ],
   "author": "daivonup@163.com",
   "license": "MIT",
