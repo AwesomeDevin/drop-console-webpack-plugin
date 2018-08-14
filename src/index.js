@@ -43,14 +43,14 @@ class DropConsoleWebpackPlugin {
 
   toReplace(source){
     const replace = new Replace(source)
-    let drop_log= true,drop_error= true,drop_info= true,drop_warn = true
+    let drop_log= true,drop_error= false,drop_info= true,drop_warn = true
     if(this.options&&this.options.drop_log === false)
     {
       drop_log = false
     }
-    if(this.options&&this.options.drop_error === false)
+    if(this.options&&this.options.drop_error === true)
     {
-      drop_error = false
+      drop_error = true
     }if(this.options&&this.options.drop_info === false)
     {
       drop_info = false
