@@ -1,5 +1,8 @@
 ## drop-console-webpack-plugin
 #### A webpack plugin for removing console and supporting webpack4
+![](https://img.shields.io/badge/npm-1.1.5-blue.svg)
+![](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ## Installation
 ```
 npm install drop-console-webpack-plugin --save
