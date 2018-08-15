@@ -23,25 +23,25 @@ class DropConsoleWebpackPlugin {
     this.emitCompilation = null;
   }
 
-  findAssets(compiler,compilation){
-    console.log(compiler.stats.assets)
-  }
-
-
   async findChunks(compilation){
+    var self = this;
     let chunks = compilation.chunks;
     for (let i = 0, len = chunks.length; i < len; i++) {
         for(var file of chunks[i].files)
         {
-          let source = compilation.assets[file].source()
-          compilation.assets[file].source = ()=>{
-            return await this.toReplace(source)
-          }
+          (async(file,self,compilation)=>{
+            let source = compilation.assets[file].source()
+            var replacedSource = await self.toReplace(source)
+            compilation.assets[file].source = ()=>{
+              return  replacedSource
+            }
+          })(file,self,compilation)
+          // compilation.assets[file].source = await this.toReplace(source)
         }
     }
   }
 
-  async toReplace(source){
+   async toReplace(source){
     const replace = new Replace(source)
     let drop_log= true,drop_error= false,drop_info= true,drop_warn = true
     if(this.options&&this.options.drop_log === false)
@@ -72,6 +72,7 @@ class DropConsoleWebpackPlugin {
     {
       source =  await replace.toReplace('console.warn')
     }
+    
     return source
   }
 

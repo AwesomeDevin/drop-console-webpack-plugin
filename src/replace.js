@@ -79,7 +79,6 @@ class Replace{
     async toReplace(condition)
     {
         return await this.main(condition)
-        console.log('result')
     }
     
 }
@@ -87,7 +86,7 @@ class Replace{
 // new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log',(res)=>{
 //     console.log('result',res)
 // })   //test
-console.log( new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log').then((res)=>{
-    console.log(res)
-}))
+// console.log( new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log').then((res)=>{
+//     console.log(res)
+// }))
 module.exports = Replace
