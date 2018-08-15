@@ -28,20 +28,20 @@ class DropConsoleWebpackPlugin {
   }
 
 
-  findChunks(compilation){
+  async findChunks(compilation){
     let chunks = compilation.chunks;
     for (let i = 0, len = chunks.length; i < len; i++) {
         for(var file of chunks[i].files)
         {
           let source = compilation.assets[file].source()
           compilation.assets[file].source = ()=>{
-            return this.toReplace(source)
+            return await this.toReplace(source)
           }
         }
     }
   }
 
-  toReplace(source){
+  async toReplace(source){
     const replace = new Replace(source)
     let drop_log= true,drop_error= false,drop_info= true,drop_warn = true
     if(this.options&&this.options.drop_log === false)
@@ -60,34 +60,25 @@ class DropConsoleWebpackPlugin {
     }
     if(drop_log )
     {
-      source =  replace.toReplace('console.log')
+      source = await replace.toReplace('console.log')
     }
     if(drop_error)
     {
-      source =  replace.toReplace('console.error')
+      source = await  replace.toReplace('console.error')
     }if(drop_info )
     {
-      source =  replace.toReplace('console.info')
+      source = await  replace.toReplace('console.info')
     }if(drop_warn )
     {
-      source =  replace.toReplace('console.warn')
+      source =  await replace.toReplace('console.warn')
     }
     return source
   }
 
   apply(compiler) {
-    // compiler.hooks.thisCompilation.tap(this.pluginName, (compilation) => {
-    //     this.findAssets(compiler,compilation)
-    // });
-    compiler.hooks.afterCompile.tap(this.pluginName, (compilation) => {
-        this.findChunks(compilation)
+    compiler.hooks.afterCompile.tap(this.pluginName,async (compilation) => {
+        await this.findChunks(compilation)
     });
-    compiler.hooks.done.tap(this.pluginName, () => {
-      console.log('Hello World end!');
-      console.log(this.options); 
-    });
-
-    
   }
 }
 
