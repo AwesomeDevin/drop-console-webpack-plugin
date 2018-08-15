@@ -20,14 +20,12 @@ if   webpack version < 4    :    2.0>drop-console-webpack-plugin version >1.2
 if   webpack version >= 4   :    drop-console-webpack-plugin version >2.0 && nodejs version > 7.6
 ```
 ## Options
-```
 Name | type | default | Description
 ---- | ---- | ------- | -----------
 drop_log | Boolean | true | remove console.log(...)
 drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | true | remove console.warn(...)
 drop_error | Boolean | false | remove console.error(...)
-```
 ## Code
 ```
 new DropConsoleWebpackPlugin({
