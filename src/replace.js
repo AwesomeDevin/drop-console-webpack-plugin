@@ -1,8 +1,11 @@
+
 class Replace{
     constructor(str,condition){
         this.leftStack = []
         this.rightStack = []
         this.str = new Buffer(str)
+        this.count = 0;
+        this.standard = 1000;
 
     }
     matchLeftBracket(condition){
@@ -29,7 +32,22 @@ class Replace{
         }
         return this.str.toString().indexOf(')',leftStack[leftStack.length-1]+1)
     }
-    async main(condition){
+    toRecursive(condition,cb){
+        this.count++;
+        if(this.count>=this.standard)
+        {
+            this.count = 0;
+            return process.nextTick(()=>{
+                return this.toReplace(condition,cb)
+            })
+        }
+        else
+        {
+            return this.toReplace(condition,cb)
+        }
+    }
+    toReplace(condition,cb){
+            // console.log('replaced')
             let leftStack = this.leftStack
             let rightStack = this.rightStack
             let startIndex,endIndex
@@ -48,11 +66,10 @@ class Replace{
                 this.str = new Buffer(strArr.join(''))
                 this.leftStack = []
                 this.rightStack = []
-                return await new Promise((resolve)=>{
-                    process.nextTick(async ()=>{
-                       resolve( await this.main(condition))
-                   })
-                })
+                // return process.nextTick(()=>{
+                //     return this.toReplace(condition,cb)
+                // })
+                return this.toRecursive(condition,cb)
             }
             if(startIndex>=0&&leftStack.length<1)
             {
@@ -67,26 +84,18 @@ class Replace{
                 rightStack.push(endIndex)
             }
             else if(startIndex<0&&leftStack.length<1&&rightStack.length<1){
-                return  this.str.toString()  
+                 cb(this.str.toString())
+                 return
             }
-            return await new Promise((resolve)=>{
-                process.nextTick(async ()=>{
-                   resolve( await this.main(condition))
-               })
-            })
-    }
-
-    async toReplace(condition)
-    {
-        return await this.main(condition)
+            // return process.nextTick(()=>{
+            //     return this.toReplace(condition,cb)
+            // })
+            return this.toRecursive(condition,cb)
     }
     
 }
 
-// new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log',(res)=>{
-//     console.log('result',res)
-// })   //test
-// console.log( new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log').then((res)=>{
-//     console.log(res)
-// }))
+new Replace('console.log(fun())function A(){console.log(123)}console.log()//123213console.log(dasdadasdfunction(){a})').toReplace('console.log',(res)=>{
+    console.log('result',res)
+})   //test
 module.exports = Replace
