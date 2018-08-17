@@ -14,8 +14,8 @@ npm install drop-console-webpack-plugin --save
 ```
 ## Notes
 ```
-if   webpack version < 4    :    2.0>drop-console-webpack-plugin version >1.2    
-if   webpack version >= 4   :    drop-console-webpack-plugin version >2.0 && nodejs version > 7.6
+if   webpack version < 4    :    2.0>drop-console-webpack-plugin version >1.3.1    
+if   webpack version >= 4   :    drop-console-webpack-plugin version >2.2.1 && nodejs version > 7.6
 ```
 ## Options
 ```
