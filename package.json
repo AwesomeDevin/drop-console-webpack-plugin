@@ -1,6 +1,6 @@
 {
   "name": "drop-console-webpack-plugin",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "A webpack plugin for removing console and supporting webpack4",
   "scripts": {
     "test": "npm test"

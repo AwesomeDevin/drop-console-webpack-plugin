@@ -6,14 +6,18 @@ class Replace{
         this.str = new Buffer(str)
         this.count = 0;
         this.standard = 10;
-        this.regexStr = ''
+        this.regexStr = '';
     }
     matchLeftBracket(conditionArr){
         let leftStack = this.leftStack
         let rightStack = this.rightStack
         let condition
         let conditionMatch = this.str.toString().match(this.regexStr)
-        if(conditionMatch&&conditionMatch.length>0)
+        if(this.regexStr.length<1)
+        {
+            return -1
+        }
+        else if(conditionMatch&&conditionMatch.length>0)
         {
         	condition = conditionMatch[0]
         }
@@ -33,7 +37,11 @@ class Replace{
         
     }
     getRegex(conditionArr){
-    	var str = ''
+        var str = ''
+        if(conditionArr.length<1)
+        {
+            return str
+        }
     	for(var index in conditionArr)
     	{
     		if(index == 0){
@@ -108,6 +116,7 @@ class Replace{
             return this.toRecursive(conditionArr,cb)
     }
     startReplace(conditionArr,cb){
+        // console.log('---')
     	this.regexStr = this.getRegex(conditionArr)
     	return this.toReplace(conditionArr,cb)
     }
