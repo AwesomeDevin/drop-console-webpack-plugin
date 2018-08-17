@@ -21,5 +21,8 @@
     "url": "https://github.com/Rise-Devin/webpack-building/issues"
   },
   "main": "src/cjs.js",
-  "homepage": "https://github.com/Rise-Devin/webpack-building#readme"
+  "homepage": "https://github.com/Rise-Devin/webpack-building#readme",
+  "dependencies": {
+    "webpack-sources": "^1.1.0"
+  }
 }
