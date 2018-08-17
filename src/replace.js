@@ -25,10 +25,10 @@ class Replace{
         }
         else
         {
-            return -1
+        	return -1
         }
         
-        if(leftStack.length==1)
+    	if(leftStack.length==1)
         {
            
             return this.str.toString().indexOf('(',leftStack[leftStack.length-1]+condition.length+2)
@@ -53,17 +53,17 @@ class Replace{
         {
             return str
         }
-        for(var index in conditionArr)
-        {
-            if(index == 0){
-                str += conditionArr[index]
-            }
-            else
-            {
-                str = str + '|' + conditionArr[index]
-            }
-        }
-        return new RegExp(str,'g')
+    	for(var index in conditionArr)
+    	{
+    		if(index == 0){
+    			str += conditionArr[index]
+    		}
+    		else
+    		{
+    			str = str + '|' + conditionArr[index]
+    		}
+    	}
+    	return new RegExp(str,'g')
     }
     matchRightBracket(){
         let leftStack = this.leftStack
@@ -129,8 +129,8 @@ class Replace{
     }
     startReplace(conditionArr,cb){
         // console.log('---')
-        this.regexStr = this.getRegex(conditionArr)
-        return this.toReplace(conditionArr,cb)
+    	this.regexStr = this.getRegex(conditionArr)
+    	return this.toReplace(conditionArr,cb)
     }
     
 }
