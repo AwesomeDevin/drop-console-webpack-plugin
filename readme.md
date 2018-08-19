@@ -14,8 +14,8 @@ npm install drop-console-webpack-plugin --save
 ```
 ## Notes
 ```
-if   webpack version < 4    :    2.0>drop-console-webpack-plugin version >=1.4.1   
-if   webpack version >= 4   :    drop-console-webpack-plugin version >=2.2.4 && nodejs version > 7.6
+if   webpack version < 4    :    2.0>drop-console-webpack-plugin version >=3.0.0
+if   webpack version >= 4   :    drop-console-webpack-plugin version >=4.0.0 && nodejs version > 7.6
 ```
 ## Options
 ```
@@ -25,6 +25,7 @@ drop_log | Boolean | true | remove console.log(...)
 drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | false | remove console.warn(...)
 drop_error | Boolean | false | remove console.error(...)
+exclude   | Array | [] | exclude chunk
 ```
 ## Code
 ```
@@ -33,5 +34,6 @@ new DropConsoleWebpackPlugin({
     drop_info   : true,
     drop_warn   : false,
     drop_error  : false,
+    exclude     : [],
 })
 ```
