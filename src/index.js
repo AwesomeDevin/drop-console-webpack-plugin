@@ -91,7 +91,7 @@ class DropConsoleWebpackPlugin {
   }
 
    initExcludeRegex(){
-    const excludeArr = this.options.exclude
+    const excludeArr = this.options&&this.options.exclude?this.options.exclude:[]
     if(!this.options||!excludeArr||excludeArr.length<1)
     {
       return ''
