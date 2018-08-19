@@ -30,8 +30,7 @@ class Replace{
         
     	if(leftStack.length==1)
         {
-           
-            return this.str.toString().indexOf('(',leftStack[leftStack.length-1]+condition.length+2)
+            return this.str.toString().indexOf('(',leftStack[leftStack.length-1]+condition.length+3)
         }
          if(leftStack.length>0)
         {
@@ -113,13 +112,13 @@ class Replace{
             {
                 leftStack.push(startIndex)
             }
-            else if(endIndex>=0 &&leftStack.length>0)
-            {
-                rightStack.push(endIndex)
-            }
             else if(startIndex>=0&&startIndex<=endIndex)
             {
                 leftStack.push(startIndex)
+            }
+            else if(endIndex>=0 &&leftStack.length>0)
+            {
+                rightStack.push(endIndex)
             }
             else if(startIndex<0&&leftStack.length<1&&rightStack.length<1){
                  cb(this.str.toString())
