@@ -30,7 +30,7 @@ drop_log | Boolean | true | remove console.log(...)
 drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | false | remove console.warn(...)
 drop_error | Boolean | false | remove console.error(...)
-exclude   | Array | [] | exclude chunk
+exclude   | Array | [] | exclude chunk - you can use it to reduce the time of build
 ```
 ## Code
 ```
@@ -39,6 +39,6 @@ new DropConsoleWebpackPlugin({
     drop_info   : true,
     drop_warn   : false,
     drop_error  : false,
-    exclude     : [],
+    exclude     : ['manifest'],
 })
 ```
