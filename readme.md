@@ -27,7 +27,6 @@ if   webpack version < 4    :    4.0.0>drop-console-webpack-plugin version >=3.0
 if   webpack version >= 4   :    drop-console-webpack-plugin version >=4.0.0 && nodejs version > 7.6
 ```
 ## Options
-```
 Name | type | default | Description
 ---- | ---- | ------- | -----------
 drop_log | Boolean | true | remove console.log(...)
@@ -35,7 +34,7 @@ drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | false | remove console.warn(...)
 drop_error | Boolean | false | remove console.error(...)
 exclude   | Array | [] | exclude chunk - you can use it to reduce the time of build
-```
+
 ## Code
 ```
 new DropConsoleWebpackPlugin({
