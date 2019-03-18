@@ -33,7 +33,7 @@ drop_log | Boolean | true | remove console.log(...)
 drop_info | Boolean | true | remove console.info(...)
 drop_warn | Boolean | false | remove console.warn(...)
 drop_error | Boolean | false | remove console.error(...)
-exclude   | Array | [] | exclude chunk - you can use it to reduce the time of build
+exclude   | Array | [] | exclude chunk - you should use it to reduce the time of building
 
 ## Code
 ```
