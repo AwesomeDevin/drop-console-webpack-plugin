@@ -1,3 +1,4 @@
+[技术博客 - welcome to my blog,AwesomeDevin's blog,trying to be a fullstack developer and sticking it ！！！](https://github.com/AwesomeDevin/blog)
 ## drop-console-webpack-plugin
 #### A webpack plugin for removing console and supporting webpack4
 ![](https://img.shields.io/badge/npm-4.0.2-blue.svg)     //webpack4
